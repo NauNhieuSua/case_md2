@@ -7,15 +7,18 @@ export class Employee {
     private _age: number;
     private _position: string;
     private _typeEmloyee : typeEmployee;
-    private _status : status
+    private _status : status;
 
-    constructor(idEmployee: string, fullname: string, age: number, position: string, typeEmloyee: typeEmployee, status: status) {
+    private _controlStatus: boolean
+
+    constructor(idEmployee: string, fullname: string, age: number, position: string, typeEmloyee: typeEmployee) {
         this._idEmployee = idEmployee;
         this._fullname = fullname;
         this._age = age;
         this._position = position;
         this._typeEmloyee = typeEmloyee;
-        this._status = status;
+        this._status = "active";
+        this._controlStatus = true
     }
 
 
@@ -65,6 +68,23 @@ export class Employee {
 
     set status(value: status) {
         this._status = value;
+    }
+
+
+    get controlStatus(): boolean {
+        return this._controlStatus;
+    }
+
+    set controlStatus(value: boolean) {
+        this._controlStatus = value;
+    }
+
+    changeStatus(controlStatus:boolean){
+        if(controlStatus==true){
+            this.status = "active"
+        }else {
+            this.status = "inactive"
+        }
     }
 
     getinfo(){
